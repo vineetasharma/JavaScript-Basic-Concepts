@@ -9,8 +9,8 @@
 
 function* gen() {
     // Pass a question to the outer code and wait for an answer
-    let result = yield "2 + 2 = ?"; // (*)
-    let result1 = yield "2 + 1 = ?"; // (*)
+    let result = yield 10; // (*)
+    let result1 = yield 11; // (*)
   
     console.log('result---',result);
     console.log('result1 ---',result1);
@@ -18,8 +18,25 @@ function* gen() {
   
   let generator = gen();
   
-//   let question = generator.next().value; // <-- yield returns the value
+  let question = generator.next().value; // <-- yield returns the value
   
-  generator.next(6); // --> pass the result into the generator
+  console.log(generator.next(6)); // --> pass the result into the generator
   generator.next(5);
   generator.next(7);
+
+/**
+ * 
+ * @param {recursion} previous 
+ */
+  function* pseudoRandom(previous){
+    let result = previous * 16807 % 2147483647;
+yield result;
+yield* pseudoRandom(result)
+  }
+    // ...Your code...
+    let generator1 = pseudoRandom(1);
+  
+  console.log(generator1.next().value); // 16807
+  console.log(generator1.next().value); // 282475249
+  console.log(generator1.next().value); // 1622650073
+  generator.next();
