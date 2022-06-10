@@ -43,5 +43,5 @@ Scripts loaded using the async attribute will download the script without blocki
 
 Scripts loaded with the defer attribute will load in the order they appear on the page. They won't run until the page content has all loaded, which is useful if your scripts depend on the DOM being in place.
 
-# Prototype
+## Prototype
 The prototype is an object that is associated with every functions and objects by default in JavaScript, where function's prototype property is accessible and modifiable and object's prototype property is not visible. Every function includes prototype object by default.
